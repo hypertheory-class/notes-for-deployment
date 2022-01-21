@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thank-you-api
+spec:
+  selector:
+    matchLabels:
+      app: thank-you-api
+  template:
+    metadata:
+      labels:
+        app: thank-you-api
+    spec:
+      containers:
+      - name: thank-you-api
+        image: jeffrygonzalez/thank-you-api:v0.2
+        env:
+          - name: ConnectionStrings__cards
+            value: server=sql-server-service;database=cards;user=sa;password=TokyoJoe138!
+        ports:
+          - containerPort: 80
+
+

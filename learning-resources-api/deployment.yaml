@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-resources-api
+spec:
+  selector:
+    matchLabels:
+      app: learning-resources-api
+  template:
+    metadata:
+      labels:
+        app: learning-resources-api
+    spec:
+      containers:
+      - name: learning-resources-api
+        image: jeffrygonzalez/learning-resource-api:v0.1
+        env:
+          - name: ConnectionStrings__resources
+            value: server=sql-server-service;database=learning_prod;user=sa;password=TokyoJoe138!
+        ports:
+          - containerPort: 80
+

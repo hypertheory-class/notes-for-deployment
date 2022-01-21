@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sql-server
+spec:
+  selector:
+    matchLabels:
+      app: sql-server
+  template:
+    metadata:
+      labels:
+        app: sql-server
+    spec:
+      containers:
+      - name: sql-server
+        image: jeffrygonzalez/sql-intro-to-programming-jan2022:v2.0
+        ports:
+        - containerPort: 1433
